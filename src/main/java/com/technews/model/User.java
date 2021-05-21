@@ -37,8 +37,6 @@ public class User implements Serializable {
     @OneToMany(mappedBy="userId",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Comment> comments;
 
-
-
     public User() {
     }
 

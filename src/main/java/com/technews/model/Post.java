@@ -24,37 +24,39 @@ public class Post implements Serializable {
     
     @Transient
     private int voteCount;
-    private Integer userid;
+    private Integer userId;
     
     @NotNull
     @Temporal(TemporalType.DATE)
-    @Column(name="posted_at")
+    @Column(name= "posted_at" )
     private Date postedAt=new Date();
     
     @NotNull
     @Temporal(TemporalType.DATE)
-    @Column(name="updated_at")
+    @Column(name= "updated_at" )
     private Date updatedAt=new Date();
-    
+
+    // Need to use FetchType.LAZY to resolve multiple bags exception
+    @OneToMany(mappedBy = "postId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
     public Post() {
     }
 
     public Post(Integer id, String title, String postUrl, int voteCount, Integer userid) {
-        id = id;
+        this.id = id;
         this.title = title;
         this.postUrl = postUrl;
         this.voteCount = voteCount;
-        this.userid = userid;
+        this.userId = userid;
     }
 
-    public Integer getid() {
+    public Integer getId() {
         return id;
     }
 
-    public void setid(Integer id) {
-        id = id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -89,12 +91,12 @@ public class Post implements Serializable {
         this.voteCount = voteCount;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Date getPostedAt() {
@@ -127,11 +129,11 @@ public class Post implements Serializable {
         if (!(o instanceof Post)) return false;
         Post post = (Post) o;
         return getVoteCount() == post.getVoteCount() &&
-                Objects.equals(getid(), post.getid()) &&
+                Objects.equals(getId(), post.getId()) &&
                 Objects.equals(getTitle(), post.getTitle()) &&
                 Objects.equals(getPostUrl(), post.getPostUrl()) &&
                 Objects.equals(getUserName(), post.getUserName()) &&
-                Objects.equals(getUserid(), post.getUserid()) &&
+                Objects.equals(getUserId(), post.getUserId()) &&
                 Objects.equals(getPostedAt(), post.getPostedAt()) &&
                 Objects.equals(getUpdatedAt(), post.getUpdatedAt()) &&
                 Objects.equals(getComments(), post.getComments());
@@ -139,7 +141,7 @@ public class Post implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getid(), getTitle(), getPostUrl(), getUserName(), getVoteCount(), getUserid(), getPostedAt(), getUpdatedAt(), getComments());
+        return Objects.hash(getId(), getTitle(), getPostUrl(), getUserName(), getVoteCount(), getUserId(), getPostedAt(), getUpdatedAt(), getComments());
     }
 
     @Override
@@ -150,7 +152,7 @@ public class Post implements Serializable {
                 ", postUrl='" + postUrl + '\'' +
                 ", userName='" + userName + '\'' +
                 ", voteCount=" + voteCount +
-                ", userid=" + userid +
+                ", userId=" + userId +
                 ", postedAt=" + postedAt +
                 ", updatedAt=" + updatedAt +
                 ", comments=" + comments +

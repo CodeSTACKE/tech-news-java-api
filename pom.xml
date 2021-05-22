@@ -18,10 +18,13 @@
 	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect -->
-		<dependency>
-			<groupId>nz.net.ultraq.thymeleaf</groupId>
-			<artifactId>thymeleaf-layout-dialect</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--&lt;!&ndash;			<groupId>nz.net.ultraq.thymeleaf</groupId>&ndash;&gt;-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--&lt;!&ndash;			<artifactId>thymeleaf-layout-dialect</artifactId>&ndash;&gt;-->
+<!--			<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>

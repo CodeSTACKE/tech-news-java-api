@@ -28,10 +28,10 @@ public class User implements Serializable {
     @Transient
     boolean loggedIn;
 
-    @OneToMany(mappedBy="userId",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="id",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     private List<Post> posts;
 
-    @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "id",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
     private List <Vote> votes;
 
     @OneToMany(mappedBy="userId",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
